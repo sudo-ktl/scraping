@@ -1,17 +1,19 @@
 import requests
 from bs4 import BeautifulSoup
-from fake_useragent import UserAgent
+# from fake_useragent import UserAgent
 import csv
 import re
 
-ua = UserAgent()
-header = {'user-agent': ua.chrome}
+user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36'
+header = {'user-agent': user_agent}
 
 src = 'https://www.tokiomarineam.co.jp/market/market_report/2023/index.html'
 
 response = requests.get(src,headers=header)
 
 soup = BeautifulSoup(response.content, 'html.parser')
+
+print(soup)
 
 # 2023年から2020年の各ページのURLを取得
 links = []
